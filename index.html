@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <link rel="icon" type="image" href="calculator.jpg">
+    <style>
+        * {
+            margin: 0px;
+        }
+
+        body {
+           background-color: rgb(224, 224, 224);
+          /* background-image: linear-gradient(to bottom right ,rgb(0, 0, 0),rgba(49, 49, 49, 0.614));*/
+   
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            /* Ensure the body takes at least the full height of the viewport */
+
+            overflow: hidden;
+
+        }
+
+        #container {
+            border: 0px solid;
+            border-radius: 20px;
+            display: grid;
+            grid-template-columns: repeat(4, 50px);
+            background-color: #fff;
+            /* Ensure the body takes at least the full height of the viewport */
+            min-width: 28vh;
+            position: relative;
+            align-items: center;
+            justify-content: center;
+            padding: 20px 20px 20px 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 8px 16px rgba(0, 0, 0, 0.1);
+        }
+
+        button {
+            border: 0px solid black;
+            margin: 10px;
+            outline: none;
+            padding: 3px;
+            border-radius: 40px;
+            width: 45px;
+            height: 45px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 8px 16px rgba(0, 0, 0, 0.1);
+            background-color: white;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: rgb(222, 218, 218);
+        }
+
+        #typing {
+            border: 0px solid rgb(255, 255, 255);
+            border-radius: 19px;
+            margin-top: 30px;
+            margin-bottom: 30px;
+            grid-column: span 4;
+            height: 60px;
+            
+            box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding-right: 10px;
+            text-align: right;
+            font-size: 30px;
+            outline: none;
+        }
+
+        .equal {
+            width: 98px;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div id="container">
+        <p style="font: bold;">CALCULATOR</p>
+        <input type="tel" id="typing" placeholder="0">
+        <button onclick="cleared()">Cl</button>
+        <button onclick="deleted()">DEL</button>
+        <button onclick="display('%')">%</button>
+        <button onclick="display('/')">/</button>
+        <button onclick="display('7')">7</button>
+        <button onclick="display('8')">8</button>
+        <button onclick="display('9')">9</button>
+        <button onclick="display('*')">*</button>
+        <button onclick="display('4')">4</button>
+        <button onclick="display('5')">5</button>
+        <button onclick="display('6')">6</button>
+        <button onclick="display('-')">-</button>
+        <button onclick="display('1')">1</button>
+        <button onclick="display('2')">2</button>
+        <button onclick="display('3')">3</button>
+        <button onclick="display('+')">+</button>
+        <button onclick="display('.')">.</button>
+        <button onclick="display('0')">0</button>
+        <button onclick="calculate('=')" class='equal'>=</button>
+    </div>
+    <script>
+
+        function display(n) {
+            var output = document.getElementById("typing");
+            output.value += n;
+
+        }
+        function cleared() {
+            var output = document.getElementById("typing")
+            output.value = ""
+        }
+        function deleted() {
+            var output = document.getElementById("typing")
+            output.value = output.value.slice(0, -1)
+        }
+        function calculate(n) {
+            var output = document.getElementById("typing");
+            output.value = eval(output.value);
+
+        }
+    </script>
+
+</body>
+
+</html>
